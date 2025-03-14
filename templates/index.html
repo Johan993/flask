@@ -1,20 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Список профессий</h2>
-{% if list == "ol" %}
-<ol>
-    {% for x in prof %}
-    <li> {{ x }}</li>
-    {% endfor %}
-</ol>
-{% elif list == "ul" %}
-<ul>
-    {% for x in prof %}
-    <li> {{ x }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<div>Неверный параметр в адресной строке</div>
-{% endif %}
+    <h1>Размещение астронавтов по каютам</h1>
+        {% for astronaut in astronauts %}
+                {% if loop.first %}
+                    {{ astronaut }} - Каюта № {{ loop.index }} - Капитан корабля:</br>
+                {% else %}
+                    {{ astronaut }} - Каюта № {{ loop.index }}</br>
+                {% endif %}
+        {% endfor %}
 {% endblock %}
