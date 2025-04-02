@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, abort, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
-from data import db_session
+from data import db_session, jobs_api
 from data.users import User
 from data.jobs import Jobs
 
@@ -12,6 +12,8 @@ from forms.addjob import AddJobForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 db_session.global_init("db/mars_explorer.db")
+
+app.register_blueprint(jobs_api.blueprint)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
